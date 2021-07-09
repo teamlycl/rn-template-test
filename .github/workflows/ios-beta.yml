@@ -91,6 +91,7 @@ jobs:
         run: |
           cd ios
           bundle exec fastlane beta
+          plutil -replace CodePushDeploymentKey -string '' ${{ env.APP_NAME }}/Info.plist
 
       - name: build version bump
         uses: actions-go/push@master
