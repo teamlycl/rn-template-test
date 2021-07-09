@@ -1,4 +1,4 @@
-PROJECT_NAME = "template-test"
+PROJECT_NAME = "template"
 XCODE_PROJECT = "./#{PROJECT_NAME}.xcodeproj"
 XCODE_WORKSPACE = "./#{PROJECT_NAME}.xcworkspace"
 OUTPUT_DIRECTORY = "./fastlane/builds"
