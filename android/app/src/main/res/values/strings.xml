@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <resources>
   <string name="app_name">template</string>
-  <string moduleConfig="true" name="CodePushDeploymentKey">5fOR0UE7I_6RZSGDUsmMldQ88Gbj4_4qAKLYz</string>
+  <string moduleConfig="true" name="CodePushDeploymentKey"/>
 </resources>
