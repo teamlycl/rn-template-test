@@ -78,19 +78,19 @@ jobs:
           working-directory: 'ios'
           bundler-cache: true
 
-      - name: Install Pods, Bundle
-        run: |
-          cd ios
-          bundle exec pod install
-          plutil -replace CodePushDeploymentKey -string ${{ secrets.CODEPUSH_DEPLOYMENT_IOS_STAGING_KEY }} ${{ env.APP_NAME }}/Info.plist
-
-      - name: Beta deploy using Fastlane
+      - name: Install Pods, Bundle, Beta deploy using Fastlane
         env:
           RELEASE_NOTE: ${{ github.event.inputs.release_notes }}
           FIREBASE_GROUP: ${{ github.event.inputs.app_target }}
         run: |
           cd ios
+          bundle exec pod install
+          plutil -replace CodePushDeploymentKey -string ${{ secrets.CODEPUSH_DEPLOYMENT_IOS_STAGING_KEY }} ${{ env.APP_NAME }}/Info.plist
           bundle exec fastlane beta
+
+      - name: Reset Codepush Deployment Key
+        run: |
+          cd ios          
           plutil -replace CodePushDeploymentKey -string '' ${{ env.APP_NAME }}/Info.plist
 
       - name: build version bump
