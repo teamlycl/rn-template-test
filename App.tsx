@@ -64,7 +64,7 @@ const App = () => {
           }}
         >
           <Section title="Step One">
-            Codepush test Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your edits.
+            Codepush test 2 Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your edits.
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
