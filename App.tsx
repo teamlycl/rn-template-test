@@ -8,7 +8,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
 
 import { Colors, DebugInstructions, Header, LearnMoreLinks, ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
@@ -53,6 +53,14 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const [label, setLabel] = useState<string>('0');
+
+  codePush.getUpdateMetadata().then((update) => {
+    if (update) {
+      setLabel(update.label);
+    }
+  });
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -64,7 +72,7 @@ const App = () => {
           }}
         >
           <Section title="Step One">
-            Codepush test 2 Edit <Text style={styles.highlight}>App.js</Text> to change this screen and then come back to see your edits.
+            <Text style={styles.highlight}>Codepush Version {label}</Text> to change this screen and then come back to see your edits.
           </Section>
           <Section title="See Your Changes">
             <ReloadInstructions />
